@@ -8,26 +8,28 @@
 User.destroy_all
 TodoList.destroy_all
 
+persons = User.create! ([
+	{ username: "Fiorina", password_digest: "Fiorina123" },
+	{ username: "Trump", password_digest: "Trump123" },
+	{ username: "Carson", password_digest: "Carson123" },
+	{ username: "Clinton", password_digest: "Clinton123" }
+	])
 
 
-person1 = User.create username: "Fiorina", password_digest: "Fiorina123"
-person2 = User.create username: "Trump", password_digest: "Trump123"
-person3 = User.create username: "Carson", password_digest: "Carson123"
-person4 = User.create username: "Clinton", password_digest: "Clinton123"
+persons[0].create_profile first_name: "Carly", last_name: "Fiorina", gender: "female", birth_year: 1954
+persons[1].create_profile first_name: "Donald", last_name: "Trump", gender: "male", birth_year: 1946
+persons[2].create_profile first_name: "Ben", last_name: "Carson", gender: "male", birth_year: 1951
+persons[3].create_profile first_name: "Hillary", last_name: "Clinton", gender: "female", birth_year: 1947
 
-person1.create_profile first_name: "Carly", last_name: "Fiorina", gender: "female", birth_year: 1954
-person2.create_profile first_name: "Donald", last_name: "Trump", gender: "male", birth_year: 1946
-person3.create_profile first_name: "Ben", last_name: "Carson", gender: "male", birth_year: 1951
-person4.create_profile first_name: "Hillary", last_name: "Clinton", gender: "female", birth_year: 1947
-
-#Profile.create first_name: "Carly", last_name: "Fiorina", gender: "female", birth_year: 1954, User_id: person1.id
-#Profile.create first_name: "Donald", last_name: "Trump", gender: "male", birth_year: 1946, User_id: person2.id
-#Profile.create first_name: "Ben", last_name: "Carson", gender: "male", birth_year: 1951, User_id: person3.id
-#Profile.create first_name: "Hillary", last_name: "Clinton", gender: "female", birth_year: 1947, User_id: person4.id
+persons[0].todo_lists.create! [{list_name: "Fiorina's list", list_due_date: Date.today + 1.year}]
+persons[1].todo_lists.create! [{list_name: "Trump's list", list_due_date: Date.today + 1.year}]
+persons[2].todo_lists.create! [{list_name: "Carson's list", list_due_date: Date.today + 1.year}]
+persons[3].todo_lists.create! [{list_name: "Clinton's list", list_due_date: Date.today + 1.year}]
 
 
-#person1.create_todolist list_name: "Fiorina's list", list_due_date: Date.today + 1.year
-#todolist1 = TodoList.create list_name: "Fiorina's list", list_due_date: Date.today + 1.year, User_id: person1.id
+
+
+
 #TodoItem.create due_date: Date.today + 1.year, title: "Fiorina's item 1", description: "item 1", completed: true, TodoList_id: todolist1.id
 #TodoItem.create due_date: Date.today + 1.year, title: "Fiorina's item 2", description: "item 1", completed: true, TodoList_id: todolist1.id
 #TodoItem.create due_date: Date.today + 1.year, title: "Fiorina's item 3", description: "item 1", completed: true, TodoList_id: todolist1.id
