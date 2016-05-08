@@ -1,6 +1,6 @@
 class TodoItemsController < ApplicationController
-  before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
-  before_action :set_todo_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_todo_list #, only: [:show, :edit, :new, :update, :destroy]
+  #before_action :set_todo_item, only: [:show, :edit, :update, :destroy]
 
   # GET /todo_items
   # GET /todo_items.json
@@ -16,7 +16,7 @@ class TodoItemsController < ApplicationController
   # GET /todo_items/new
   def new
     #@todo_list.todo_item = TodoItem.new
-    @todo_list.todo_items.new
+    @todo_item = @todo_list.todo_items.new
   end
 
   # GET /todo_items/1/edit
